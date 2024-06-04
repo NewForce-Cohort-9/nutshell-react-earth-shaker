@@ -97,3 +97,6 @@ localStorage.removeItem("activeUser")
    * Short paragraphs
    * Bulleted lists
 7. Strive for consistency.
+
+ERD:
+https://dbdiagram.io/d/Nutshell-665f21afb65d9338797aa8f8
