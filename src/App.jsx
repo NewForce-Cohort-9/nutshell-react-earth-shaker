@@ -2,9 +2,10 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import AllNews from './components/AllNews'
 
 
-function App() {
+export const App=()=> {
   const [count, setCount] = useState(0)
 
   return (
@@ -13,9 +14,11 @@ function App() {
       <header className="App-header">
         <h1>Welcome to Nutshell</h1>
       </header>
+      <AllNews />
     </div>
     </>
   )
 }
 
 export default App
+
