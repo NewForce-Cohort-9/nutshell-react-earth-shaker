@@ -91,5 +91,3 @@ export const modifyArticle = async (id, updatedArticle) => {
   const data = await response.json();
   return data;
 };
-
-
