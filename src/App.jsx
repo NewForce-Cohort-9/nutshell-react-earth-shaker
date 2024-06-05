@@ -5,14 +5,18 @@ import viteLogo from '/vite.svg';
 import './App.css';
 import { NavBar } from './components/nav/NavBar.jsx';
 import { ApplicationViews } from './views/ApplicationViews.jsx';
+import { Login } from './components/auth/Login.jsx';
+import { Register } from './components/auth/Register.jsx';
+import { Authorized } from './views/Authorized.jsx';
 
 function App() {
   const [count, setCount] = useState(0);
-
   return (
     <Router>
       <Routes>
-        <Route path="*" element={<ApplicationViews />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+        <Route path="*" element={  <Authorized> <ApplicationViews /> </Authorized>} />
       </Routes>
       <div className="Dashboard">
         <header className="App-header">
@@ -22,5 +26,4 @@ function App() {
     </Router>
   );
 }
-
 export default App;
