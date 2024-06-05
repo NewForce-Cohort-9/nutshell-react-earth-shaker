@@ -18,11 +18,9 @@ export const Login = () => {
         localStorage.setItem(
           "nutshell_user",
           JSON.stringify({
-            id: user.id,
-            /*isStaff: user.isStaff,*/
+            id: user.id
           })
         )
-        //then it will navigate to home
         navigate("/")
       } else {
         window.alert("Invalid login")
