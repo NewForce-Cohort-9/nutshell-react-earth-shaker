@@ -56,31 +56,39 @@ const handleEditSave = async () => {
   return (
   <>
       <h2>News</h2>
-  
-      <div className="news-add-form">
-        <label>Title: </label>
-      <input className="news-input-title" type="text" value={newArticle.title} onChange={(event) => {
+      <form>
+
+      <div class="form-group">
+    <label>Title</label>
+    <input type="text" class="form-control"placeholder="Enter title" value={newArticle.title} onChange={(event) => {
       //spreads the existing properties of newArticle into the new object, and then sets the title property to the new value from event.target.value
       //so other properties (synopsis and url) are preserved.
       //spread operator (...) creates copy of the existing state object, preserving all the current properties and their values. Then, you update only the specific property that changed (e.g., title), while the other properties (e.g., synopsis and url) remain unchanged. This ensures that the user doesn't lose any data they have already entered in other fields.
       //Update the newArticle state with the value typed by the user:
       setNewArticle({ ...newArticle, title: event.target.value })
       //console.log(onChange)//Log the event to see the user's input
-          }}
-        /><br/>
-        <label>Synopsis: </label>
-        <input className="news-input-synopsis" type="text" value={newArticle.synopsis} onChange={(event) => {
+          }}/>
+
+  </div>
+
+<div class="form-group">
+    <label>Synopsis</label>
+    <input type="text" class="form-control" value={newArticle.synopsis} onChange={(event) => {
       setNewArticle({ ...newArticle, synopsis: event.target.value })
-          }}
-        /><br/>
-        <label>URL: </label>
-        <input className="news-input-url" type="text" value={newArticle.url} onChange={(event) => {
+          }} placeholder="Enter synopsis"/>
+  </div>
+
+  <div class="form-group">
+    <label>URL</label>
+    <input type="text"  class="form-control" value={newArticle.url} onChange={(event) => {
       // Update the newArticle state with the value typed by the user:
       setNewArticle({ ...newArticle, url: event.target.value })
-          }}
-        /><br/>
-      <button className="news-input-submit" onClick={handleAddArticle}>Save Article</button>  
-      </div>
+          }}placeholder="Enter url" />
+  </div>
+      <button class="btn btn-success" onClick={handleAddArticle}>Save Article</button>  
+      {/* </div> */}
+  </form>
+
   
   <div className="article-lists-container">
   <div className="article-list-container">
@@ -90,21 +98,24 @@ const handleEditSave = async () => {
               if (articleBeingEdited && articleBeingEdited.id === article.id) {
                 return (
                   <div className="article-list-item" key={article.id}>
+                       <label>Title: </label>
                     <input
                       type="text"
                       value={articleBeingEdited.title}
                       onChange={(e) => setArticleBeingEdited({ ...articleBeingEdited, title: e.target.value })}
-                    />
+                    /><br/>
+                    <label>Synopsis: </label>
                     <input
                       type="text"
                       value={articleBeingEdited.synopsis}
                       onChange={(e) => setArticleBeingEdited({ ...articleBeingEdited, synopsis: e.target.value })}
-                    />
+                    /><br/>
+                    <label>URL: </label>
                     <input
                       type="text"
                       value={articleBeingEdited.url}
                       onChange={(e) => setArticleBeingEdited({ ...articleBeingEdited, url: e.target.value })}
-                    />
+                    /><br/>
                     <button onClick={handleEditSave}>Save</button>
                     {/* <button onClick={() => setArticleBeingEdited({})}>Cancel</button> */}
                   </div>
@@ -116,8 +127,8 @@ const handleEditSave = async () => {
                     <p>{article.synopsis}</p>
                     <a href='{article.url}'>{article.url}</a>
                     <div>
-                    <button onClick={() => handleEditClick(article)}>Modify</button>
-                    <button onClick={() => handleDeleteArticle(article.id)}>Delete</button>
+                    <button class="btn btn-primary btn-sm" onClick={() => handleEditClick(article)}>Modify</button>
+                    <button class="btn btn-danger btn-sm" onClick={() => handleDeleteArticle(article.id)}>Delete</button>
                     </div>
                   </div>
                 )

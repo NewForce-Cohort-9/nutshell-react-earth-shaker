@@ -81,23 +81,26 @@
       "url": "https://polarbearsinternational.org/news-media/articles/surprising-facts-about-polar-bears/",
       "title": "10 Surprising Facts About Polar Bears",
       "synopsis": "From a love of blubber to enormous paws, polar bears are remarkable animals, with many unusual adaptations that help them thrive in the Arctic. ",
-      "timestamp": "2024-06-04T15:15:19.200Z"
+      "timestamp": "2024-06-04T15:15:19.200Z",
+      "originalTimestamp": "2024-06-04T15:15:19.200Z"
     },
     {
       "id": 4,
       "userId": 5,
       "url": "https://www.nathab.com/blog/weird-panda-behavior-explained/#:~:text=Pandas'%20body%20shape%20also%20contributes,and%20dogs%20love%20sniffing%20things.",
       "title": "Panda Behavior Explained: Why Pandas Are so Charmingly Weird",
-      "synopsis": "Pandas’ body shape also contributes to their clumsiness, because they have round bodies and short limbs, making them easily fall out of balance and roll. ",
-      "timestamp": "2024-06-04T15:18:19.200Z"
+      "synopsis": "A panda's round body and short limbs make them extra clumsy. ",
+      "timestamp": "2024-06-04T15:18:19.200Z",
+      "originalTimestamp": "2024-06-04T15:18:19.200Z"
     },
     {
       "id": 5,
       "userId": 1,
       "url": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/snake-bites#:~:text=Don't%20try%20to%20suck,infection%20and%20cause%20more%20damage.",
       "title": "Snake Bites",
-      "synopsis": "Sucking the venom out of snakebites can make it worse",
-      "timestamp": "2024-06-04T18:18:19.200Z"
+      "synopsis": "Sucking the venom out of snakebites can actually make it worse",
+      "timestamp": "2024-06-04T18:18:19.200Z",
+      "originalTimestamp": "2024-06-04T18:18:19.200Z"
     }
   ],
   "events": [
