@@ -48,7 +48,7 @@ body{
   position: fixed;
   z-index: 9;
   width: 400px;
-  /*display: none;*/
+  display: none;
 }
 
 

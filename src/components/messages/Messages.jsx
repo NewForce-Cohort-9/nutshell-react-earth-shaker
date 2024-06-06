@@ -1,38 +1,33 @@
 import "./Messages.css"
 import { getMessages } from "../../services/messageService.jsx"
-import { useNavigate } from "react-router-dom"
+import { updateMessage } from "../../services/messageService.jsx"
 import { useState } from "react"
 
 export const Messages = () => {
-  const navigate = useNavigate()
   const [message, setMessage] = useState("")
 
   const handleMessage = (e) => {
     e.preventDefault()
-getMessages(message).then((foundMessages) => {
-  if (foundMessages.length === 1) {
-    const userId = foundMessages[0]
-    localStorage.setItem(
-      "nutshell_user",
-      JSON.stringify({
-        id: userId
-      })
-    )
-    navigate("/")
-  } 
-})
+
   }
 
   const newMessage = (evt) => {
-    const copy = { ...user}
+    const copy = { ...message}
     copy[evt.target.id] = evt.target.value
-    setUser(copy)
+    setMessage(copy)
   }
+  // const openChatWindow = () => {
+  //   document.getElementById("chat-form-container").style.display = "block";
+  // };
+
+  // const closeChatWindow = () => {
+  //   document.getElementById("chat-form-container").style.display = "none";
+  // };
 
 return (
   <main>
     <button className="open-btn" 
-    onClick={"openChatWindow()"}>
+    onClick={openChatWindow}>
       <i className="fa fa-comment"></i>Chat
       </button>
 
@@ -45,7 +40,7 @@ return (
           <h4><i className="fa fa-comment"></i>Chat Window</h4>
 
           <span className="close-btn" 
-          onClick={"closeChatWindow()"}>
+          onClick={closeChatWindow}>
             <i className="fa fa-times"></i>
             </span>
         </div>
@@ -66,7 +61,10 @@ return (
             className="msg" 
             required 
             />
-            <button type="submit" className="btn"><i className="fa fa-chevron-circle-right send-btn"></i></button>
+            <button type="submit" 
+            className="btn">
+              <i className="fa fa-chevron-circle-right send-btn">
+                </i></button>
           </div>
         </div>
       </form>
