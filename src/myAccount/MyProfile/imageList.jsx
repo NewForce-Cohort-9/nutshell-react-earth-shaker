@@ -2,6 +2,7 @@
 import { getAllImages } from "../../services/imageServices.jsx"
 import { Image } from "./images.jsx"
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 import "./images.css"
 //import { Ticket } from "./ticket.jsx"
 //import "./tickets.css"
