@@ -1,39 +1,55 @@
-import { useEffect, useState } from 'react';
-import { getAllEvents } from '../../services/eventService.jsx';
-import './Events.css';
-import { Messages } from '../messages/Messages.jsx';
+// EventList.jsx
 
-export const EventList = () => {
-  const [events, setEvents] = useState([]);
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { getAllEvents } from "../../services/eventService.jsx";
+import "./Events.css";
+import { Event } from "./Events.jsx";
 
-  useEffect(() => {
-    getAllEvents().then(data => {
-      setEvents(data);
-    });
-  }, []);
+export const EventList = ({ currentUser }) => {
+    const [allEvents, setAllEvents] = useState([]);
+    const [filteredEvents, setFilteredEvents] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
 
-  if (events.length === 0) {
-    return <p>Loading...</p>;
-  }
+    const getAndSetEvents = () => {
+        getAllEvents().then((eventsArray) => {
+            setAllEvents(eventsArray);
+            setFilteredEvents(eventsArray);
+        });
+    };
 
-  return (
-    <section className="events-list">
-      <div>
-      < Messages />
-      </div>
-      {events.map(event => (
-        <div key={event.id} className="event">
-          <header className="event-header">{event.name}</header>
-          <div>
-            <span className="event-info">Date: </span>
-            {event.date}
-          </div>
-          <div>
-            <span className="event-info">Location: </span>
-            {event.location}
-          </div>
+    useEffect(() => {
+        getAndSetEvents();
+    }, [currentUser]);
+
+    useEffect(() => {
+        const foundEvents = allEvents.filter((event) =>
+            event.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setFilteredEvents(foundEvents);
+    }, [searchTerm, allEvents]);
+
+    return (
+        <div className="events-container">
+            <h2>Events</h2>
+            <Link to="/events/new" className="btn btn-primary">Create New Event</Link>
+            <input
+                type="text"
+                placeholder="Search events..."
+                onChange={(event) => setSearchTerm(event.target.value)}
+            />
+            <article className="events">
+                {filteredEvents.map((eventObject) => {
+                    return (
+                        <Event
+                            event={eventObject}
+                            currentUser={currentUser}
+                            getAndSetEvents={getAndSetEvents}
+                            key={eventObject.id}
+                        />
+                    );
+                })}
+            </article>
         </div>
-      ))}
-    </section>
-  );
+    );
 };
