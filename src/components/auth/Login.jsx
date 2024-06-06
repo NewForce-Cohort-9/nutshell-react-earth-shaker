@@ -21,7 +21,7 @@ export const Login = () => {
             id: user.id
           })
         )
-        navigate("/")
+        navigate("/home")
       } else {
         window.alert("Invalid login")
       }
@@ -32,7 +32,8 @@ export const Login = () => {
     <main className="container-login">
       <section>
         <form className="form-login" onSubmit={handleLogin}>
-          <h1>Welcome to Nutshell!</h1>
+          <h1>Welcome To Nutshell</h1>
+          <p>HOME OF THE EARTH SHAKER!</p>
           <h2>Please sign in</h2>
           <fieldset>
             <div className="form-group">
@@ -56,7 +57,7 @@ export const Login = () => {
           </fieldset>
         </form>
       </section>
-      <section>
+      <section className="form-group-register">
         <Link to="/register">Not a member yet?</Link>
       </section>
     </main>

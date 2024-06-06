@@ -1,0 +1,173 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins);
+
+
+/*The *, know as the CSS universal selector, can be used to select any and all types of elements in an HTML page */
+*{
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+body{
+  background: whitesmoke;
+}
+
+
+.open-btn{
+  background: #7D72E4;
+  color: whitesmoke;
+  padding: 16px 20px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  font-size: 16px;
+  margin-right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px 0px, rgba(17, 17, 26, 0.05) 0px 8px 32px 0px;
+  bottom: 24px;
+  right: 30px;
+  width: 280px;
+}
+
+
+.open-btn i{
+  font-size: 28px;
+  margin-right: 20px;
+}
+
+
+.chat-popup{
+  bottom: 16px;
+  right: 16px;
+  position: fixed;
+  z-index: 9;
+  width: 400px;
+  /*display: none;*/
+}
+
+
+.form-container{
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 400px;
+  background: white;
+  border-radius: 10px 10px 6px 6px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px 0px, rgba(17, 17, 26, 0.05) 0px 8px 32px 0px;
+}
+
+
+.chat-window-head{
+  display: flex;
+  justify-content: space-between;
+  background: #7D72E4;
+  padding: 16px 14px;
+  border-radius: 10px 10px 0px;
+}
+
+
+.chat-window-head i{
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+
+.chat-window-head h4{
+  color: white;
+  font-weight: 500;
+}
+
+
+.close-btn{
+  color: white;
+  cursor: pointer;
+}
+
+
+.msg-container{
+  padding: 12px 10px;
+  height: 300px;
+  margin: 10px 0;
+}
+
+
+.msg{
+  background-color: #E4E3EE;
+  padding: 10px 16px;
+  border-radius: 50px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.msg p{
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+
+.msg span{
+  font-size: 10px;
+  color: grey;
+}
+
+
+.chat-box-container{
+  display: flex;
+  height: 46px;
+  margin-bottom: 16px;
+  padding: 0px 14px;
+}
+
+
+.chat-box{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 30px;
+  background: #F5F5F5;
+  border: 1px solid grey;
+}
+
+
+.form-container input{
+  width: 80%;
+  padding: 4px;
+  height: 46px;
+  padding-left: 16px;
+  border: none;
+  background: #F1F1F1;
+  border-radius: 4px;
+}
+
+
+.form-container input:focus{
+  outline: none;
+  background: #F5F5F5;
+}
+
+
+.send-btn, .btn{
+  width: 60px;
+  background: #7D72E4;
+  color: white;
+  height: 100%;
+  border-radius: 0 10px 10px 0;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 300ms;
+}
+
+
+.btn-hover, .open-btn:hover{
+  opacity: 0.9;
+}

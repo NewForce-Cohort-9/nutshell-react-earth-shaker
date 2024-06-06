@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getAllEvents } from '../../services/eventService.jsx';
 import './Events.css';
+import { Messages } from '../messages/Messages.jsx';
 
 export const EventList = () => {
   const [events, setEvents] = useState([]);
@@ -17,6 +18,9 @@ export const EventList = () => {
 
   return (
     <section className="events-list">
+      <div>
+      < Messages />
+      </div>
       {events.map(event => (
         <div key={event.id} className="event">
           <header className="event-header">{event.name}</header>

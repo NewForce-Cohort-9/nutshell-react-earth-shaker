@@ -5,11 +5,8 @@ import { Login } from './components/auth/Login.jsx';
 import { Register } from './components/auth/Register.jsx';
 import { Authorized } from './views/Authorized.jsx';
 
+
 function App() {
-<<<<<<< HEAD
-  const [count, setCount] = useState(0);
-=======
->>>>>>> main
   return (
     <Router>
       <Routes>

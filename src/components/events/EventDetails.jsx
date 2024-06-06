@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getAllEvents } from '../../services/eventService.jsx';
 import './Events.css';
 
+
 export const EventDetails = () => {
   const [event, setEvent] = useState(null);
   const { eventId } = useParams();
