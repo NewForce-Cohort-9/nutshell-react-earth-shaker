@@ -24,6 +24,11 @@
       "id": 5,
       "username": "Barry",
       "email": "barry@gmail.com"
+    },
+    {
+      "email": "bpardue33@gmail.com",
+      "username": "Meowph",
+      "id": 6
     }
   ],
   "messages": [
@@ -87,12 +92,12 @@
       "timestamp": "2024-06-04T15:18:19.200Z"
     },
     {
-      "title": "a11",
-      "synopsis": "s11",
-      "url": "https://google.com",
-      "timestamp": "2024-06-06T13:58:37.833Z",
       "id": 5,
-      "originalTimestamp": "2024-06-06T13:58:37.833Z"
+      "userId": 1,
+      "url": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/snake-bites#:~:text=Don't%20try%20to%20suck,infection%20and%20cause%20more%20damage.",
+      "title": "Snake Bites",
+      "synopsis": "Sucking the venom out of snakebites can make it worse",
+      "timestamp": "2024-06-04T18:18:19.200Z"
     }
   ],
   "events": [
