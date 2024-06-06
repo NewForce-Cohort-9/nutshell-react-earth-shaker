@@ -2,6 +2,7 @@
 import { getAllImages } from "../../services/imageServices.jsx"
 import { Image } from "./images.jsx"
 import { useState, useEffect } from "react"
+import "./images.css"
 //import { Ticket } from "./ticket.jsx"
 //import "./tickets.css"
 //import { TicketFilterBar } from "./ticketFilterBar.jsx"

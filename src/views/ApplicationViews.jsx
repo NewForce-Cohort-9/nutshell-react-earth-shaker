@@ -1,28 +1,26 @@
-import { ImageList } from "../myAccount/MyProfile/imageList.jsx"
-import { Outlet, Route, Routes } from "react-router-dom"
-import { NavBar } from "../components/nav/NavBar.jsx"
-import { useState, useEffect } from "react"
 
+// export const ApplicationViews = () => {
 
-export const ApplicationViews = () => {
-
-    return <Routes>
-        <Route path="/" 
-        element = { 
-        <>
-        <NavBar />
-        <Outlet />
-        </>
-        }
-        >
-        </Route>
-        <Route path="profile" >
-        <Route index element={<ImageList />} /> 
-        </Route>
+//     return <Routes>
+//         <Route path="/" 
+//         element = { 
+//         <>
+//         <NavBar />
+//         <Outlet />
+//         </>
+//         }
+//         >
+//         </Route>
+//         <Route path="profile" >
+//         <Route index element={<ImageList />} /> 
+//         </Route>
         
-        </Routes> 
-}
+//         </Routes> 
+// }
 // create a route that when you are in the "My Profile" component the image list would show up 
+import { Image } from '../myAccount/MyProfile/images.jsx';
+import { ImageList } from '../myAccount/MyProfile/imageList.jsx';
+import { ImageDetails } from '../myAccount/MyProfile/imageDetails.jsx';
 import { Outlet, Route, Routes, Navigate } from 'react-router-dom';
 import { NavBar } from '../components/nav/NavBar.jsx';
 import { EventList } from '../components/events/EventList.jsx';
@@ -37,6 +35,8 @@ export const ApplicationViews = () => {
         <Route path="home" element={<Welcome />} />
         <Route path="events" element={<EventList />} />
         <Route path="events/:eventId" element={<EventDetails />} />
+        <Route path="profile" element={<ImageList />} /> 
+        <Route path="image-info" element={<ImageDetails />} />
       </Routes>
       <Outlet />
     </>
