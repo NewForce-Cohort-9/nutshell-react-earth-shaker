@@ -1,9 +1,11 @@
+// EventForm.jsx
+
 import { useState } from "react";
 import "./Form.css";
 import { createEvent } from "../../services/eventService.jsx";
 import { useNavigate } from "react-router-dom";
 
-export const EventForm = () => {
+export const EventForm = ({ currentUser }) => {
     const [event, setEvent] = useState({ name: "", date: "", location: "" });
     const navigate = useNavigate();
 
@@ -15,6 +17,7 @@ export const EventForm = () => {
                 name: event.name,
                 date: event.date,
                 location: event.location,
+                userId: currentUser.id, // Add userId of the current user
             };
 
             createEvent(newEvent).then(() => {
