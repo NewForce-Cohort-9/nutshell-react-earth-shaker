@@ -8,13 +8,26 @@ export const EventList = ({ currentUser }) => {
     const [allEvents, setAllEvents] = useState([]);
     const [filteredEvents, setFilteredEvents] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
+    const [upcomingEvents, setUpcomingEvents] = useState([]);
+    const [pastEvents, setPastEvents] = useState([]);
 
     const getAndSetEvents = () => {
         getAllEvents().then((eventsArray) => {
-            // Sort events by date
-            const sortedEvents = eventsArray.sort((a, b) => new Date(a.date) - new Date(b.date));
+            // Sort events by date using descriptive variable names
+            const sortedEvents = eventsArray.sort((firstEvent, secondEvent) => new Date(firstEvent.date) - new Date(secondEvent.date));
             setAllEvents(sortedEvents);
             setFilteredEvents(sortedEvents);
+
+            // Get the current date (year, month, day)
+            const now = new Date();
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+            // Separate events
+            const upcoming = sortedEvents.filter(event => new Date(event.date) >= today);
+            const past = sortedEvents.filter(event => new Date(event.date) < today);
+
+            setUpcomingEvents(upcoming);
+            setPastEvents(past);
         });
     };
 
@@ -27,6 +40,15 @@ export const EventList = ({ currentUser }) => {
             event.name.toLowerCase().includes(searchTerm.toLowerCase())
         );
         setFilteredEvents(foundEvents);
+
+        const now = new Date();
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+        const upcoming = foundEvents.filter(event => new Date(event.date) >= today);
+        const past = foundEvents.filter(event => new Date(event.date) < today);
+
+        setUpcomingEvents(upcoming);
+        setPastEvents(past);
     }, [searchTerm, allEvents]);
 
     return (
@@ -38,9 +60,10 @@ export const EventList = ({ currentUser }) => {
                 placeholder="Search events..."
                 onChange={(event) => setSearchTerm(event.target.value)}
             />
-            <article className="events">
-                {filteredEvents.map((eventObject, index) => {
-                    return (
+            <section>
+                <h3>Upcoming Events</h3>
+                <article className="events">
+                    {upcomingEvents.map((eventObject, index) => (
                         <Event
                             event={eventObject}
                             currentUser={currentUser}
@@ -48,9 +71,22 @@ export const EventList = ({ currentUser }) => {
                             key={eventObject.id}
                             isMostImmediate={index === 0}
                         />
-                    );
-                })}
-            </article>
+                    ))}
+                </article>
+            </section>
+            <section>
+                <h3>Past Events</h3>
+                <article className="events">
+                    {pastEvents.map(eventObject => (
+                        <Event
+                            event={eventObject}
+                            currentUser={currentUser}
+                            getAndSetEvents={getAndSetEvents}
+                            key={eventObject.id}
+                        />
+                    ))}
+                </article>
+            </section>
         </div>
     );
 };
