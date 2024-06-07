@@ -21,7 +21,8 @@
 import { Image } from '../myAccount/MyProfile/images.jsx';
 import { ImageList } from '../myAccount/MyProfile/imageList.jsx';
 import { ImageDetails } from '../myAccount/MyProfile/imageDetails.jsx';
-
+import { ImageEditForm } from '../myAccount/MyProfile/editImageForm.jsx';
+import { PostForm } from '../myAccount/MyProfile/imageForm.jsx';
 import { Outlet, Route, Routes, Navigate } from 'react-router-dom';
 import { NavBar } from '../components/nav/NavBar.jsx';
 import { EventList } from '../components/events/EventList.jsx';
@@ -39,8 +40,10 @@ export const ApplicationViews = () => {
         <Route path="events" element={<EventList />} />
         <Route path="events/new" element={<EventForm />} />
         <Route path="events/:eventId" element={<EventDetails />} />
+        <Route path="profile/new" element={< PostForm /> } />
         <Route path="profile" element={<ImageList />} /> 
         <Route path="image-info" element={<ImageDetails />} />
+        <Route path="profile/edit/imageId" element= {<ImageEditForm />} />
         <Route path="events/edit/:eventId" element={<EventEditForm/>} />
       </Routes>
       <Outlet />

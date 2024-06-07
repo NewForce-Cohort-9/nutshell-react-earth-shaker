@@ -4,9 +4,6 @@ import { Image } from "./images.jsx"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import "./images.css"
-//import { Ticket } from "./ticket.jsx"
-//import "./tickets.css"
-//import { TicketFilterBar } from "./ticketFilterBar.jsx"
 
 
 export const ImageList = ({currentUser}) => {
@@ -21,7 +18,8 @@ export const ImageList = ({currentUser}) => {
     
     return (
     <div className="images-container">
-     <h2>Images</h2>
+     <h2>Posts</h2>
+     <Link to="/profile/new" className="btn btn-primary">Submit New Post</Link>
      <article className="images">
       {allImages.map(imageObj => {
         return (
