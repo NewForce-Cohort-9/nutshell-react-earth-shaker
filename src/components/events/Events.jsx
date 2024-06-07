@@ -1,3 +1,4 @@
+// Event.jsx
 
 import { useNavigate } from "react-router-dom";
 import { updateEvent, deleteEvent } from "../../services/eventService.jsx";
@@ -23,10 +24,12 @@ export const Event = ({ event, currentUser, getAndSetEvents }) => {
             <div>{event.date}</div>
             <div>{event.location}</div>
             <footer>
-                <div className="button-container">
-                    <button className="btn btn-warning" onClick={handleUpdate}>Edit</button>
-                    <button className="btn btn-danger" onClick={handleDelete}>Delete</button>
-                </div>
+                {event.userId === currentUser.id && (
+                    <div className="button-container">
+                        <button className="btn btn-warning" onClick={handleUpdate}>Edit</button>
+                        <button className="btn btn-danger" onClick={handleDelete}>Delete</button>
+                    </div>
+                )}
             </footer>
             <div>
                 <Messages />
