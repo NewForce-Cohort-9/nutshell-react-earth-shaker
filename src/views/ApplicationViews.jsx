@@ -18,8 +18,8 @@ export const ApplicationViews = ({currentUser}) => {
         <Route path="events/new" element={<EventForm currentUser={currentUser} />} />
         <Route path="events/:eventId" element={<EventDetails />} />
         <Route path="events/edit/:eventId" element={<EventEditForm currentUser={currentUser} />} />
-        <Route path="news" element={<AllNews />} />
-        <Route path="news/addArticle" element={<NewsForm />} />  
+        <Route path="news" element={<AllNews currentUser={currentUser}/>} />
+        <Route path="news/addArticle" element={<NewsForm currentUser={currentUser}/>} />  
       </Routes>
       <Outlet />
     </>
