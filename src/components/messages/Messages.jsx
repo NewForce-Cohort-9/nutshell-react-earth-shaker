@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getAllMessages, newMessage, updateMessage } from "../../services/messageService.jsx";
 import './Messages.css'; 
-import { Messageform } from './MessageForm.jsx';
 
 export const Messages = () => {
   const [messages, setMessages] = useState([]);
@@ -30,20 +29,25 @@ export const Messages = () => {
     setNewMessageText(e.target.value);
   };
 
-  //Data is not being retrieved for some reason
+  //Data is not being retrieved for some reason...help
   const handleNewMessageSubmit = async (e) => {
     e.preventDefault();
-    if (user) {
-    await newMessage({
+    if (!user) {
+      console.error("User is not logged in.");
+      return;
+    }
+
+    const newMessageData = {
       userId: user.id, 
-      username: user.name, 
+      username: user.username, 
       message: newMessageText, 
-      timestamp: new Date().toISOString() });
+      timestamp: new Date().toISOString()
+    };
+    console.log('Submitting new message:', newMessageData);
+
+    await newMessage(newMessageData);
     setNewMessageText('');
     fetchMessages();
-  } else {
-    console.error('User data not available');
-  }
 };
 
   const handleEditMessageChange = (e) => {
@@ -52,7 +56,10 @@ export const Messages = () => {
 
   const handleEditMessageSubmit = async (e) => {
     e.preventDefault();
-    await updateMessage(editingMessageId, { message: editingMessageText, timestamp: new Date().toISOString() });
+    await updateMessage(
+      editingMessageId, 
+      { message: editingMessageText, 
+      timestamp: new Date().toISOString() });
     setEditingMessageId(null);
     setEditingMessageText('');
     fetchMessages();
@@ -86,9 +93,7 @@ export const Messages = () => {
           <div className="messages-list">
             {messages.map((msg) => (
               <div key={msg.id} className={`message-item ${msg.userId === user?.id ? 'sent-by-user' : ''}`}>
-                </div>
-                )
-                /* {editingMessageId === msg.id ? (
+                {editingMessageId === msg.id ? (
                   <form onSubmit={handleEditMessageSubmit} className="edit-form">
                     <input
                       type="text"
@@ -132,4 +137,4 @@ export const Messages = () => {
       )}
     </div>
   );
-}; */
+};
