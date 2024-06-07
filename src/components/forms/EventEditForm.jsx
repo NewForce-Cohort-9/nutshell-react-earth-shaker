@@ -4,7 +4,7 @@ import "./Form.css";
 import { updateEvent, getEventById } from "../../services/eventService.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 
-export const EventEditForm = () => {
+export const EventEditForm = ({currentUser}) => {
     const { eventId } = useParams();
     const [event, setEvent] = useState({ name: "", date: "", location: "" });
     const navigate = useNavigate();

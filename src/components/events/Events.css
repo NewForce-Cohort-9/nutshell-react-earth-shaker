@@ -1,0 +1,30 @@
+/* Events.css */
+
+.events-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .event {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+  }
+  
+  .event-info {
+    font-size: 1.2em;
+  }
+  
+  .button-container {
+    margin-top: 10px;
+  }
+  
+  .most-immediate {
+    font-weight: bold;
+    border-color: #000; /* Optional: Make the border color different for emphasis */
+    font-size: large;
+    background-color: lightblue;
+  }
+  

@@ -100,31 +100,43 @@
       "id": 1,
       "name": "Music Festival",
       "date": "2024-07-15",
-      "location": "Historic Crew Stadium, Columbus OH"
+      "location": "Historic Crew Stadium, Columbus OH",
+      "userId": 1
     },
     {
       "id": 2,
       "name": "Art Exhibition",
       "date": "2024-08-20",
-      "location": "Artspace, Richmond VA"
+      "location": "Artspace, Richmond VA",
+      "userId": 2
     },
     {
       "id": 3,
       "name": "Food Truck Festival",
       "date": "2024-09-10",
-      "location": "Downtown, Huntington WV"
+      "location": "Downtown, Huntington WV",
+      "userId": 3
     },
     {
       "id": 4,
       "name": "Tech Conference",
       "date": "2024-10-05",
-      "location": "Aronoff Center, Cincinnati OH"
+      "location": "Aronoff Center, Cincinnati OH",
+      "userId": 4
     },
     {
       "id": 5,
       "name": "Movie Premiere",
       "date": "2024-11-18",
-      "location": "P. Ahmed Williams Auditorium, Charleston WV"
+      "location": "P. Ahmed Williams Auditorium, Charleston WV",
+      "userId": 5
+    },
+    {
+      "name": "Birth of worlds most important man",
+      "date": "1997-04-30",
+      "location": "Erie, Pennsylvania",
+      "userId": 5,
+      "id": 6
     }
   ],
   "tasks": [

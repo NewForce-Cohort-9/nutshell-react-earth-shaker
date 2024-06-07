@@ -5,16 +5,16 @@ import { Login } from './components/auth/Login.jsx';
 import { Register } from './components/auth/Register.jsx';
 import { Authorized } from './views/Authorized.jsx';
 
-
 function App() {
   return (
     <Router>
       <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-        <Route path="*" element={  <Authorized> <ApplicationViews /> </Authorized>} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="*" element={<Authorized><ApplicationViews /></Authorized>} />
       </Routes>
     </Router>
   );
 }
+
 export default App;

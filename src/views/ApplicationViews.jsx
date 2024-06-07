@@ -32,21 +32,22 @@ import { EventEditForm } from '../components/forms/EventEditForm.jsx'
 import { AllNews } from '../components/news/AllNews.jsx'
 import { NewsForm } from '../components/news/NewsForm.jsx'
 
-export const ApplicationViews = () => {
+export const ApplicationViews = ({currentUser}) => {
   return (
     <>
       <NavBar />
       <Routes>
         {/* /login is default page for when app is first opened */}
         <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="events" element={<EventList />} />
-        <Route path="events/new" element={<EventForm />} />
+        <Route path="events" element={<EventList currentUser={currentUser} />} />
+        <Route path="events/new" element={<EventForm currentUser={currentUser} />} />
         <Route path="events/:eventId" element={<EventDetails />} />
         <Route path="profile/new" element={< PostForm /> } />
         <Route path="profile" element={<ImageList />} /> 
         <Route path="image-info" element={<ImageDetails />} />
         <Route path="profile/edit/:imageId" element= {<ImageEditForm />} />
         <Route path="events/edit/:eventId" element={<EventEditForm/>} />
+        <Route path="events/edit/:eventId" element={<EventEditForm currentUser={currentUser} />} />
         <Route path="news" element={<AllNews />} />
         <Route path="news/addArticle" element={<NewsForm />} />  
       </Routes>
