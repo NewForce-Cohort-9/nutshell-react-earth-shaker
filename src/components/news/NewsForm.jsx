@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { createNewArticle } from '../../services/newsServices' 
 
-export const NewsForm = () => {
+export const NewsForm = ({currentUser}) => {
     const [newArticle, setNewArticle] = useState({ title: '', synopsis: '', url: '' })
     const navigate = useNavigate() // useNavigate hook
 
@@ -16,6 +16,7 @@ export const NewsForm = () => {
             title: newArticle.title,
             synopsis: newArticle.synopsis,
             url: newArticle.url,
+            userId: currentUser.id, // track currentUser
             timestamp: new Date().toISOString(), // give new article a timestamp
         }
         await createNewArticle(article)
@@ -25,7 +26,7 @@ export const NewsForm = () => {
     }
 
     return (
-        <form onSubmit={handleAddArticle}>
+        <form>
             <div className="form-group">
                 <label>Title</label>
                 <input
@@ -61,7 +62,7 @@ export const NewsForm = () => {
                 />
             </div>
             <div className="button-group">
-                <button type="submit" className="btn btn-success">
+                <button type="submit" className="btn btn-success" onClick={handleAddArticle}>
                     Save Article
                 </button>
             </div>
