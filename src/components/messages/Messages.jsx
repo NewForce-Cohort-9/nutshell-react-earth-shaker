@@ -29,7 +29,7 @@ export const Messages = () => {
     setNewMessageText(e.target.value);
   };
 
-  //Data is not being retrieved for some reason...help
+  //Data is not being retrieved for some reason...so many edits turned into this monstrosity... help
   const handleNewMessageSubmit = async (e) => {
     e.preventDefault();
     if (!user) {
@@ -91,7 +91,7 @@ export const Messages = () => {
       {isOpen && (
         <>
           <div className="messages-list">
-            {messages.map((msg) => (
+            {messages?.map((msg) => (
               <div key={msg.id} className={`message-item ${msg.userId === user?.id ? 'sent-by-user' : ''}`}>
                 {editingMessageId === msg.id ? (
                   <form onSubmit={handleEditMessageSubmit} className="edit-form">
@@ -101,6 +101,7 @@ export const Messages = () => {
                       onChange={handleEditMessageChange}
                       required
                     />
+                    {/* */}
                     <div>
                       <button className="update-button" type="submit">Update</button>
                       <button type="button" onClick={cancelEditing}>Cancel</button>

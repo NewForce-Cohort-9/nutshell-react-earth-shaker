@@ -13,12 +13,12 @@ export const newMessage = (userId, messages) => {
   }).then((res) => res.json())
 }
 
-export const updateMessage = (message, newMessage) => {
+export const updateMessage = (message) => {
   return fetch(`http://localhost:8088/messages/${message.id}`, {
     method: 'PUT',
     headers: {
       'Content-type': 'application/json',
     },
-    body: JSON.stringify(message, newMessage)
+    body: JSON.stringify(message)
   }).then((res) => res.json())
 }

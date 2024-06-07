@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { getAllNews, deleteArticle, modifyArticle } from '../../services/newsServices'
 import "./AllNews.css"
 import { useNavigate } from 'react-router-dom'
+import { Messages } from '../messages/Messages.jsx'
 
 
 export const AllNews = () => {
@@ -106,6 +107,9 @@ export const AllNews = () => {
             })}
           </article>
         </div>     
+      </div>
+      <div>
+        < Messages />
       </div>
     </>
   )
