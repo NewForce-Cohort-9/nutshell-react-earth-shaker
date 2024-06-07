@@ -31,13 +31,15 @@ export const EventList = ({ currentUser }) => {
 
     return (
         <div className="events-container">
-            <h2>Events</h2>
-            <Link to="/events/new" className="btn btn-primary">Create New Event</Link>
+            <h2>Upcoming Events</h2>
+            
             <input
                 type="text"
                 placeholder="Search events..."
                 onChange={(event) => setSearchTerm(event.target.value)}
             />
+            <div></div>
+            <Link to="/events/new" className="btn btn-primary">Create New Event</Link>
             <article className="events">
                 {filteredEvents.map((eventObject) => {
                     return (
