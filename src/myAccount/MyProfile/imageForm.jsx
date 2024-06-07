@@ -12,7 +12,7 @@ export const PostForm = () => {
 
         if (image.url && image.caption) {
             const newPost = {
-                link: image.url,
+                url: image.url,
                 caption: image.caption
             };
 

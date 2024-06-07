@@ -8,24 +8,37 @@ import "./images.css"
 
 export const ImageList = ({currentUser}) => {
     const [allImages, setAllImages] = useState([])
+    const [filteredImages, setFilteredImages] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+
     
-    useEffect(() => {
+    const getAndSetImages = () => {
       getAllImages().then((imagesArray) => {
         setAllImages(imagesArray)
-      })
-    }, []) // runs on initial render of component
-  
+        setFilteredImages(imagesArray)
+      });
+    }; 
+    
+    useEffect(() => {
+      getAndSetImages();
+  }, [currentUser]);
+
     
     return (
     <div className="images-container">
      <h2>Posts</h2>
      <Link to="/profile/new" className="btn btn-primary">Submit New Post</Link>
      <article className="images">
-      {allImages.map(imageObj => {
-        return (
-          <Image image={imageObj} currentUser={currentUser} key= {imageObj.id}/>
-        )
-      })}
+     {filteredImages.map((imageObject) => {
+                    return (
+                        <Image
+                            image={imageObject}
+                            currentUser={currentUser}
+                            getAndSetImages={getAndSetImages}
+                            key={imageObject.id}
+                        />
+                    );
+                  })}
      </article>
     </div>
     ) 

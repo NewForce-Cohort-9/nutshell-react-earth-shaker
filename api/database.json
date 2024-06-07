@@ -64,43 +64,35 @@
       "userId": 2,
       "url": "https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/",
       "title": "Wormholes Allow Information to Escape Black Holes",
-      "synopsis": "Check out this recent discovery about wormholes",
-      "timestamp": "2024-06-04T08:15:19.200Z"
+      "synopsis": "Check out this recent discovery about wormholes"
     },
     {
       "id": 2,
       "userId": 3,
       "url": "https://czep.net/weblog/52cards.html",
       "title": "52 Factorial",
-      "synopsis": "There are more ways to arrange a deck of cards than there are atoms on Earth",
-      "timestamp": "2024-06-04T13:13:19.200Z"
+      "synopsis": "There are more ways to arrange a deck of cards than there are atoms on Earth"
     },
     {
       "id": 3,
       "userId": 4,
       "url": "https://polarbearsinternational.org/news-media/articles/surprising-facts-about-polar-bears/",
       "title": "10 Surprising Facts About Polar Bears",
-      "synopsis": "From a love of blubber to enormous paws, polar bears are remarkable animals, with many unusual adaptations that help them thrive in the Arctic",
-      "timestamp": "2024-06-04T15:15:19.200Z",
-      "originalTimestamp": "2024-06-04T15:15:19.200Z"
+      "synopsis": "From a love of blubber to enormous paws, polar bears are remarkable animals, with many unusual adaptations that help them thrive in the Arctic. "
     },
     {
       "id": 4,
       "userId": 5,
       "url": "https://www.nathab.com/blog/weird-panda-behavior-explained/#:~:text=Pandas'%20body%20shape%20also%20contributes,and%20dogs%20love%20sniffing%20things.",
       "title": "Panda Behavior Explained: Why Pandas Are so Charmingly Weird",
-      "synopsis": "A panda's round body and short limbs make them extra clumsy",
-      "timestamp": "2024-06-04T15:18:19.200Z",
-      "originalTimestamp": "2024-06-04T15:18:19.200Z"
+      "synopsis": "Pandas’ body shape also contributes to their clumsiness, because they have round bodies and short limbs, making them easily fall out of balance and roll. "
     },
     {
       "id": 5,
       "userId": 1,
       "url": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/snake-bites#:~:text=Don't%20try%20to%20suck,infection%20and%20cause%20more%20damage.",
       "title": "Snake Bites",
-      "synopsis": "Sucking the venom out of snakebites can actually make it worse",
-      "timestamp": "2024-06-04T18:18:19.200Z",
-      "originalTimestamp": "2024-06-04T18:18:19.200Z"
+      "synopsis": "Sucking the venom out of snakebites can make it worse"
     }
   ],
   "events": [
@@ -197,6 +189,13 @@
       "userId": 2,
       "url": "https://img1.10bestmedia.com/Images/Photos/412666/Ripleys-Aquarium-of-the-Smokies_55_660x440.jpg",
       "caption": "Saw a massive sea turtle at Ripley's Aquarium, Tennessee"
+    },
+  
+    {
+      "url": "https://images.squarespace-cdn.com/content/v1/51cdafc4e4b09eb676a64e68/1470759791755-P1DBVYSIVA5V4NAWP0T6/nemo5.jpg",
+      "caption": "nemo",
+      "id": 8,
+      "date": "nemo!"
     }
   ],
   "friends": [

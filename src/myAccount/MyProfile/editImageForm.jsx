@@ -36,7 +36,7 @@ export const ImageEditForm = () => {
                     <input
                         type="text"
                         className="form-control"
-                        placeholder="Event name"
+                        placeholder="Image Url"
                         value={image.url}
                         onChange={(e) => {
                             const imageCopy = { ...image };
@@ -52,7 +52,7 @@ export const ImageEditForm = () => {
                     <input
                         type="text"
                         className="form-control"
-                        placeholder="YYYY-MM-DD"
+                        placeholder="Caption"
                         value={image.caption}
                         onChange={(e) => {
                             const imageCopy = { ...image };

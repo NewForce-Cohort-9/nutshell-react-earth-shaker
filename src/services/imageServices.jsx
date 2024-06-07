@@ -16,7 +16,7 @@ export const createPost = (image) => {
     })
 }
 // lets me update post
-export const updatePost = (event) => {
+export const updatePost = (image) => {
     return fetch(`http://localhost:8088/images/${image.id}`, {
         method: "PUT",
         headers: {

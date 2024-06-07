@@ -24,12 +24,6 @@ import { ImageDetails } from '../myAccount/MyProfile/imageDetails.jsx';
 import { ImageEditForm } from '../myAccount/MyProfile/editImageForm.jsx';
 import { PostForm } from '../myAccount/MyProfile/imageForm.jsx';
 import { Outlet, Route, Routes, Navigate } from 'react-router-dom';
-import { NavBar } from '../components/nav/NavBar.jsx';
-import { EventList } from '../components/events/EventList.jsx';
-import { EventDetails } from '../components/events/EventDetails.jsx';
-import { EventForm } from '../components/forms/EventForm.jsx';
-import { EventEditForm } from '../components/forms/EventEditForm.jsx';
-import { Outlet, Route, Routes, Navigate } from 'react-router-dom'
 import { NavBar } from '../components/nav/NavBar.jsx'
 import { EventList } from '../components/events/EventList.jsx'
 import { EventDetails } from '../components/events/EventDetails.jsx'
@@ -51,9 +45,8 @@ export const ApplicationViews = () => {
         <Route path="profile/new" element={< PostForm /> } />
         <Route path="profile" element={<ImageList />} /> 
         <Route path="image-info" element={<ImageDetails />} />
-        <Route path="profile/edit/imageId" element= {<ImageEditForm />} />
+        <Route path="profile/edit/:imageId" element= {<ImageEditForm />} />
         <Route path="events/edit/:eventId" element={<EventEditForm/>} />
-        <Route path="events/edit/:eventId" element={<EventEditForm />} />
         <Route path="news" element={<AllNews />} />
         <Route path="news/addArticle" element={<NewsForm />} />  
       </Routes>
