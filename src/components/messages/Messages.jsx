@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { getAllMessages, newMessage, updateMessage } from "../../services/messageService.jsx";
 import './Messages.css'; 
+import { getUserById } from '../../services/userService.jsx';
 
 export const Messages = () => {
   const [messages, setMessages] = useState([]);
   const [newMessageText, setNewMessageText] = useState('');
   const [editingMessageId, setEditingMessageId] = useState(null);
   const [editingMessageText, setEditingMessageText] = useState('');
+  const [editedMessage, setNewEditedMessage] = useState({ })
   const [isOpen, setIsOpen] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false)
   const [user, setUser] = useState(null); 
   
 
   useEffect(() => {
-    const loggedInUser = JSON.parse(localStorage.getItem('user'));
+    const loggedInUser = JSON.parse(localStorage.getItem('nutshell_user'));
     if (loggedInUser) {
-      setUser(loggedInUser);
+        setUser(loggedInUser);
     }
     fetchMessages();
   }, []);
@@ -39,7 +42,6 @@ export const Messages = () => {
 
     const newMessageData = {
       userId: user.id, 
-      username: user.username, 
       message: newMessageText, 
       timestamp: new Date().toISOString()
     };
@@ -56,28 +58,33 @@ export const Messages = () => {
 
   const handleEditMessageSubmit = async (e) => {
     e.preventDefault();
-    await updateMessage(
-      editingMessageId, 
-      { message: editingMessageText, 
-      timestamp: new Date().toISOString() });
-    setEditingMessageId(null);
-    setEditingMessageText('');
-    fetchMessages();
+    editedMessage.message = editingMessageText
+    updateMessage(editedMessage).then(() => {
+      getAllMessages().then((response) => {
+        setMessages(response)
+        setNewEditedMessage({})
+          });
+    })
   };
 
-  const startEditingMessage = (messageId, currentText) => {
-    setEditingMessageId(messageId);
-    setEditingMessageText(currentText);
+  const startEditingMessage = (msgParam) => {
+    setIsEditOpen(true)
+    setNewEditedMessage(msgParam);
+
   };
 
   const cancelEditing = () => {
-    setEditingMessageId(null);
-    setEditingMessageText('');
+    setNewEditedMessage({})
   };
 
   const toggleContainer = () => {
     setIsOpen(!isOpen);
   };
+
+  const toggleEditContainer = () => {
+    setIsEditOpen(!isEditOpen);
+  };
+
 
   return (
     <div id="messageContainer" className={isOpen ? 'open' : 'closed'}>
@@ -91,9 +98,9 @@ export const Messages = () => {
       {isOpen && (
         <>
           <div className="messages-list">
-            {messages.map((msg) => (
+            {messages?.map((msg) => (
               <div key={msg.id} className={`message-item ${msg.userId === user?.id ? 'sent-by-user' : ''}`}>
-                {editingMessageId === msg.id ? (
+                {editedMessage.id === msg.id ? (
                   <form onSubmit={handleEditMessageSubmit} className="edit-form">
                     <input
                       type="text"
@@ -105,19 +112,20 @@ export const Messages = () => {
                       <button className="update-button" type="submit">Update</button>
                       <button type="button" onClick={cancelEditing}>Cancel</button>
                     </div>
-                  </form>
+                    </form>
                 ) : (
                   <div className="message-content">
                     <p>{msg.message}</p>
-                    <span className="username">{msg.username}</span>
+                    <span className="username">{msg.user.username}</span>
                     <span className="timestamp">{new Date(msg.timestamp).toLocaleString()}</span>
                   </div>
                 )}
                 <div className="message-actions">
-                  {editingMessageId !== msg.id && (
-                    <button onClick={() => startEditingMessage(msg.id, msg.message)} className="edit-button">
+                  {editedMessage.id !== msg.id && (
+                    <button onClick={() => startEditingMessage(msg)} className="edit-button">
                       Edit
                     </button>
+                   
                   )}
                 </div>
               </div>

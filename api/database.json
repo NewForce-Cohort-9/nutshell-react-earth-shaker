@@ -30,32 +30,80 @@
     {
       "id": 1,
       "userId": 1,
-      "message": "What's up?",
-      "timestamp": "2024-06-20T12:32"
+      "message": "tttt",
+      "timestamp": "2024-06-07T18:50:01.109Z"
     },
     {
+      "timestamp": "2024-06-07T18:50:01.109Z",
       "id": 2,
       "userId": 2,
-      "message": "Hello there!",
-      "timestamp": "2024-01-13T01:40"
+      "message": "ghgh"
     },
     {
+      "timestamp": "2024-06-07T18:50:01.109Z",
       "id": 3,
       "userId": 3,
-      "message": "Good morning!",
-      "timestamp": "2024-06-20T12:32"
+      "message": "edited2"
     },
     {
+      "timestamp": "2024-06-07T18:50:01.109Z",
       "id": 4,
       "userId": 4,
-      "message": "How are you?",
-      "timestamp": "2024-06-11T10:12"
+      "message": "dgfgfg"
     },
     {
+      "timestamp": "2024-06-07T18:50:01.109Z",
       "id": 5,
       "userId": 5,
-      "message": "Nice weather today!",
-      "timestamp": "2024-03-24T04:10"
+      "message": "ffgfg"
+    },
+    {
+      "userId": 1,
+      "message": "brooks",
+      "timestamp": "2024-06-07T18:50:01.109Z",
+      "id": 6
+    },
+    {
+      "userId": 1,
+      "message": "response",
+      "timestamp": "2024-06-07T18:54:00.708Z",
+      "id": 7
+    },
+    {
+      "userId": 1,
+      "message": "POTUS ultimate",
+      "timestamp": "2024-06-07T18:54:53.510Z",
+      "id": 8
+    },
+    {
+      "userId": 1,
+      "message": "new",
+      "timestamp": "2024-06-07T18:58:42.437Z",
+      "id": 9
+    },
+    {
+      "userId": 1,
+      "message": "new",
+      "timestamp": "2024-06-07T19:00:26.368Z",
+      "id": 10
+    },
+    {
+      "userId": 5,
+      "message": "happy!",
+      "timestamp": "2024-06-07T19:07:05.630Z",
+      "id": 11
+    },
+    {
+      "userId": 5,
+      "message": "work?",
+      "timestamp": "2024-06-07T19:08:05.784Z",
+      "id": 12
+    },
+    {
+      "userId": 5,
+      "message": "??",
+      "timestamp": "2024-06-07T19:08:36.584Z",
+      "id": 13
     }
   ],
   "articles": [
@@ -100,36 +148,31 @@
       "id": 1,
       "name": "Music Festival",
       "date": "2024-07-15",
-      "location": "Historic Crew Stadium, Columbus OH",
-      "userId": 1
+      "location": "Historic Crew Stadium, Columbus OH"
     },
     {
       "id": 2,
       "name": "Art Exhibition",
       "date": "2024-08-20",
-      "location": "Artspace, Richmond VA",
-      "userId": 2
+      "location": "Artspace, Richmond VA"
     },
     {
       "id": 3,
       "name": "Food Truck Festival",
       "date": "2024-09-10",
-      "location": "Downtown, Huntington WV",
-      "userId": 3
+      "location": "Downtown, Huntington WV"
     },
     {
       "id": 4,
       "name": "Tech Conference",
       "date": "2024-10-05",
-      "location": "Aronoff Center, Cincinnati OH",
-      "userId": 4
+      "location": "Aronoff Center, Cincinnati OH"
     },
     {
       "id": 5,
       "name": "Movie Premiere",
       "date": "2024-11-18",
-      "location": "P. Ahmed Williams Auditorium, Charleston WV",
-      "userId": 5
+      "location": "P. Ahmed Williams Auditorium, Charleston WV"
     }
   ],
   "tasks": [
