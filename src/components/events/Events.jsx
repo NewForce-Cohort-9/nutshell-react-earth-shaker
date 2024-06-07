@@ -1,6 +1,7 @@
 
 import { useNavigate } from "react-router-dom";
 import { updateEvent, deleteEvent } from "../../services/eventService.jsx";
+import { Messages } from "../messages/Messages.jsx";
 
 export const Event = ({ event, currentUser, getAndSetEvents }) => {
     const navigate = useNavigate();
@@ -27,6 +28,9 @@ export const Event = ({ event, currentUser, getAndSetEvents }) => {
                     <button className="btn btn-danger" onClick={handleDelete}>Delete</button>
                 </div>
             </footer>
+            <div>
+                <Messages />
+            </div>
         </section>
     );
 };

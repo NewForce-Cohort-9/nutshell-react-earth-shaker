@@ -1,74 +1,135 @@
-import "./Messages.css"
-import { getMessages } from "../../services/messageService.jsx"
-import { updateMessage } from "../../services/messageService.jsx"
-import { useState } from "react"
+import React, { useEffect, useState } from 'react';
+import { getAllMessages, newMessage, updateMessage } from "../../services/messageService.jsx";
+import './Messages.css'; 
+import { Messageform } from './MessageForm.jsx';
 
 export const Messages = () => {
-  const [message, setMessage] = useState("")
+  const [messages, setMessages] = useState([]);
+  const [newMessageText, setNewMessageText] = useState('');
+  const [editingMessageId, setEditingMessageId] = useState(null);
+  const [editingMessageText, setEditingMessageText] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState(null); 
+  
 
-  const handleMessage = (e) => {
-    e.preventDefault()
+  useEffect(() => {
+    const loggedInUser = JSON.parse(localStorage.getItem('user'));
+    if (loggedInUser) {
+      setUser(loggedInUser);
+    }
+    fetchMessages();
+  }, []);
 
+  //reverse is not working...
+  const fetchMessages = async () => {
+    const fetchedMessages = await getAllMessages();
+    setMessages(fetchedMessages.reverse());
+  };
+
+  const handleNewMessageChange = (e) => {
+    setNewMessageText(e.target.value);
+  };
+
+  //Data is not being retrieved for some reason
+  const handleNewMessageSubmit = async (e) => {
+    e.preventDefault();
+    if (user) {
+    await newMessage({
+      userId: user.id, 
+      username: user.name, 
+      message: newMessageText, 
+      timestamp: new Date().toISOString() });
+    setNewMessageText('');
+    fetchMessages();
+  } else {
+    console.error('User data not available');
   }
+};
 
-  const newMessage = (evt) => {
-    const copy = { ...message}
-    copy[evt.target.id] = evt.target.value
-    setMessage(copy)
-  }
-  // const openChatWindow = () => {
-  //   document.getElementById("chat-form-container").style.display = "block";
-  // };
+  const handleEditMessageChange = (e) => {
+    setEditingMessageText(e.target.value);
+  };
 
-  // const closeChatWindow = () => {
-  //   document.getElementById("chat-form-container").style.display = "none";
-  // };
+  const handleEditMessageSubmit = async (e) => {
+    e.preventDefault();
+    await updateMessage(editingMessageId, { message: editingMessageText, timestamp: new Date().toISOString() });
+    setEditingMessageId(null);
+    setEditingMessageText('');
+    fetchMessages();
+  };
 
-return (
-  <main>
-    <button className="open-btn" 
-    onClick={openChatWindow}>
-      <i className="fa fa-comment"></i>Chat
-      </button>
+  const startEditingMessage = (messageId, currentText) => {
+    setEditingMessageId(messageId);
+    setEditingMessageText(currentText);
+  };
 
-    <div className="chat-popup" id="chat-form-container">
-      <form action="#" 
-      className="form-container" 
-      onSubmit={handleMessage}>
-        <div className="chat-window-head">
+  const cancelEditing = () => {
+    setEditingMessageId(null);
+    setEditingMessageText('');
+  };
 
-          <h4><i className="fa fa-comment"></i>Chat Window</h4>
+  const toggleContainer = () => {
+    setIsOpen(!isOpen);
+  };
 
-          <span className="close-btn" 
-          onClick={closeChatWindow}>
-            <i className="fa fa-times"></i>
-            </span>
-        </div>
+  return (
+    <div id="messageContainer" className={isOpen ? 'open' : 'closed'}>
+      <div className="header" onClick={toggleContainer}>
+        <h3>Messages</h3>
+        <button type="button" className="toggle-button">
+          {isOpen ? 'Close' : 'Open'}
+        </button>
+      </div>
 
-        <div className="msg-container">
-          <div className="msg">
-            <p>Hey, how are ya?</p>
-            <span>09:34pm</span>
+      {isOpen && (
+        <>
+          <div className="messages-list">
+            {messages.map((msg) => (
+              <div key={msg.id} className={`message-item ${msg.userId === user?.id ? 'sent-by-user' : ''}`}>
+                </div>
+                )
+                /* {editingMessageId === msg.id ? (
+                  <form onSubmit={handleEditMessageSubmit} className="edit-form">
+                    <input
+                      type="text"
+                      value={editingMessageText}
+                      onChange={handleEditMessageChange}
+                      required
+                    />
+                    <div>
+                      <button className="update-button" type="submit">Update</button>
+                      <button type="button" onClick={cancelEditing}>Cancel</button>
+                    </div>
+                  </form>
+                ) : (
+                  <div className="message-content">
+                    <p>{msg.message}</p>
+                    <span className="username">{msg.username}</span>
+                    <span className="timestamp">{new Date(msg.timestamp).toLocaleString()}</span>
+                  </div>
+                )}
+                <div className="message-actions">
+                  {editingMessageId !== msg.id && (
+                    <button onClick={() => startEditingMessage(msg.id, msg.message)} className="edit-button">
+                      Edit
+                    </button>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-
-        <div className="chat-box-container">
-          <div className="chat-box">
-            <input 
-            type="text"
-            onChange={newMessage} 
-            placeholder="Type your message..." 
-            className="msg" 
-            required 
+          <form onSubmit={(e) => handleNewMessageSubmit(e, user?.id, user?.name)} className="new-message-form">
+            <input
+              type="text"
+              value={newMessageText}
+              onChange={handleNewMessageChange}
+              placeholder="New message"
+              required
             />
-            <button type="submit" 
-            className="btn">
-              <i className="fa fa-chevron-circle-right send-btn">
-                </i></button>
-          </div>
-        </div>
-      </form>
+            <button type="submit">Submit</button>
+          </form>
+        </>
+      )}
     </div>
-  </main>
-)
-}
+  );
+}; */

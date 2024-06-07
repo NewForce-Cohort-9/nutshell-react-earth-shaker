@@ -24,38 +24,38 @@
       "id": 5,
       "username": "Barry",
       "email": "barry@gmail.com"
-    },
-    {
-      "email": "bpardue33@gmail.com",
-      "username": "Meowph",
-      "id": 6
     }
   ],
   "messages": [
     {
       "id": 1,
       "userId": 1,
-      "message": "What's up?"
+      "message": "What's up?",
+      "timestamp": "2024-06-20T12:32"
     },
     {
       "id": 2,
       "userId": 2,
-      "message": "Hello there!"
+      "message": "Hello there!",
+      "timestamp": "2024-01-13T01:40"
     },
     {
       "id": 3,
       "userId": 3,
-      "message": "Good morning!"
+      "message": "Good morning!",
+      "timestamp": "2024-06-20T12:32"
     },
     {
       "id": 4,
       "userId": 4,
-      "message": "How are you?"
+      "message": "How are you?",
+      "timestamp": "2024-06-11T10:12"
     },
     {
       "id": 5,
       "userId": 5,
-      "message": "Nice weather today!"
+      "message": "Nice weather today!",
+      "timestamp": "2024-03-24T04:10"
     }
   ],
   "articles": [
