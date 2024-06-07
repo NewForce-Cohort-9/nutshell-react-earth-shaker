@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { deleteEvent } from "../../services/eventService.jsx";
 import "./Events.css";
+import { Messages } from "../messages/Messages.jsx";
 
 export const Event = ({ event, currentUser, getAndSetEvents, isMostImmediate }) => {
     const navigate = useNavigate();
@@ -29,6 +30,9 @@ export const Event = ({ event, currentUser, getAndSetEvents, isMostImmediate }) 
                     </div>
                 )}
             </footer>
+            <div>
+                <Messages />
+            </div>
         </section>
     );
 };
