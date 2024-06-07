@@ -1,15 +1,15 @@
 export const getAllMessages = () => {
-  return fetch (`http://localhost:8088/messages?_expand=username`
+  return fetch (`http://localhost:8088/messages?_expand=user`
 ).then((res) => res.json())
 }
 
-export const newMessage = (userId, messages) => {
+export const newMessage = (message) => {
   return fetch("http://localhost:8088/messages", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(userId, messages),
+    body: JSON.stringify(message),
   }).then((res) => res.json())
 }
 

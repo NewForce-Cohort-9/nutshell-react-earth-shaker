@@ -1,11 +1,7 @@
 import { useNavigate } from "react-router-dom";
-<<<<<<< HEAD
-import { updateEvent, deleteEvent } from "../../services/eventService.jsx";
-import { Messages } from "../messages/Messages.jsx";
-=======
 import { deleteEvent } from "../../services/eventService.jsx";
 import "./Events.css";
->>>>>>> main
+import { Messages } from "../messages/Messages.jsx";
 
 export const Event = ({ event, currentUser, getAndSetEvents, isMostImmediate }) => {
     const navigate = useNavigate();
