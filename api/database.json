@@ -130,6 +130,13 @@
       "date": "2024-11-18",
       "location": "P. Ahmed Williams Auditorium, Charleston WV",
       "userId": 5
+    },
+    {
+      "name": "Birth of worlds most important man",
+      "date": "1997-04-30",
+      "location": "Erie, Pennsylvania",
+      "userId": 5,
+      "id": 6
     }
   ],
   "tasks": [

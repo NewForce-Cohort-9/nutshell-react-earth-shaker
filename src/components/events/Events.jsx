@@ -1,10 +1,13 @@
-// Event.jsx
-
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import { updateEvent, deleteEvent } from "../../services/eventService.jsx";
 import { Messages } from "../messages/Messages.jsx";
+=======
+import { deleteEvent } from "../../services/eventService.jsx";
+import "./Events.css";
+>>>>>>> main
 
-export const Event = ({ event, currentUser, getAndSetEvents }) => {
+export const Event = ({ event, currentUser, getAndSetEvents, isMostImmediate }) => {
     const navigate = useNavigate();
 
     const handleUpdate = () => {
@@ -18,8 +21,8 @@ export const Event = ({ event, currentUser, getAndSetEvents }) => {
     };
 
     return (
-        <section className="event">
-            <header className="event-info">#{event.id}</header>
+        <section className={`event ${isMostImmediate ? 'most-immediate' : ''}`}>
+            <header className="event-info"></header>
             <div>{event.name}</div>
             <div>{event.date}</div>
             <div>{event.location}</div>
