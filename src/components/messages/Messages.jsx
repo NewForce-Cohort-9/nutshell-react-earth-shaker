@@ -1,76 +1,148 @@
-import "./Messages.css"
-import { getMessages } from "../../services/messageService.jsx"
-import { useNavigate } from "react-router-dom"
-import { useState } from "react"
+import React, { useEffect, useState } from 'react';
+import { getAllMessages, newMessage, updateMessage } from "../../services/messageService.jsx";
+import './Messages.css'; 
+
 
 export const Messages = () => {
-  const navigate = useNavigate()
-  const [message, setMessage] = useState("")
+  const [messages, setMessages] = useState([]);
+  const [newMessageText, setNewMessageText] = useState('');
+  const [editingMessageId, setEditingMessageId] = useState(null);
+  const [editingMessageText, setEditingMessageText] = useState('');
+  const [editedMessage, setNewEditedMessage] = useState({ })
+  const [isOpen, setIsOpen] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false)
+  const [user, setUser] = useState(null); 
+  
 
-  const handleMessage = (e) => {
-    e.preventDefault()
-getMessages(message).then((foundMessages) => {
-  if (foundMessages.length === 1) {
-    const userId = foundMessages[0]
-    localStorage.setItem(
-      "nutshell_user",
-      JSON.stringify({
-        id: userId
-      })
-    )
-    navigate("/")
-  } 
-})
-  }
+  useEffect(() => {
+    const loggedInUser = JSON.parse(localStorage.getItem('nutshell_user'));
+    if (loggedInUser) {
+        setUser(loggedInUser);
+    }
+    fetchMessages();
+  }, []);
 
-  const newMessage = (evt) => {
-    const copy = { ...user}
-    copy[evt.target.id] = evt.target.value
-    setUser(copy)
-  }
+  //reverse is not working until after edit is made... correct and create another pull
+  const fetchMessages = async () => {
+    const fetchedMessages = await getAllMessages();
+    setMessages(fetchedMessages.reverse(""));
+  };
 
-return (
-  <main>
-    <button className="open-btn" 
-    onClick={"openChatWindow()"}>
-      <i className="fa fa-comment"></i>Chat
-      </button>
+  const handleNewMessageChange = (e) => {
+    setNewMessageText(e.target.value);
+  };
 
-    <div className="chat-popup" id="chat-form-container">
-      <form action="#" 
-      className="form-container" 
-      onSubmit={handleMessage}>
-        <div className="chat-window-head">
+  const handleNewMessageSubmit = async (e) => {
+    e.preventDefault();
+    if (!user) {
+      console.error("User is not logged in.");
+      return;
+    }
 
-          <h4><i className="fa fa-comment"></i>Chat Window</h4>
+    const newMessageData = {
+      userId: user.id, 
+      message: newMessageText, 
+      timestamp: new Date().toISOString()
+    };
+    console.log('Submitting new message:', newMessageData);
 
-          <span className="close-btn" 
-          onClick={"closeChatWindow()"}>
-            <i className="fa fa-times"></i>
-            </span>
-        </div>
+    await newMessage(newMessageData);
+    setNewMessageText('');
+    fetchMessages();
+};
 
-        <div className="msg-container">
-          <div className="msg">
-            <p>Hey, how are ya?</p>
-            <span>09:34pm</span>
+  const handleEditMessageChange = (e) => {
+    setEditingMessageText(e.target.value);
+  };
+
+  const handleEditMessageSubmit = async (e) => {
+    e.preventDefault();
+    editedMessage.message = editingMessageText
+    updateMessage(editedMessage).then(() => {
+      getAllMessages().then((response) => {
+        setMessages(response)
+        setNewEditedMessage({})
+          });
+    })
+  };
+
+  const startEditingMessage = (msgParam) => {
+    setIsEditOpen(true)
+    setNewEditedMessage(msgParam);
+
+  };
+
+  const cancelEditing = () => {
+    setNewEditedMessage({})
+  };
+
+  const toggleContainer = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const toggleEditContainer = () => {
+    setIsEditOpen(!isEditOpen);
+  };
+
+
+  return (
+    <div id="messageContainer" className={isOpen ? 'open' : 'closed'}>
+      <div className="header" onClick={toggleContainer}>
+        <h3>Messages</h3>
+        <button type="button" className="toggle-button">
+          {isOpen ? 'Close' : 'Open'}
+        </button>
+      </div>
+
+      {isOpen && (
+        <>
+          <div className="messages-list">
+            {messages?.map((msg) => (
+              <div key={msg.id} className={`message-item ${msg.userId === user?.id ? 'sent-by-user' : ''}`}>
+                {editedMessage.id === msg.id ? (
+                  <form onSubmit={handleEditMessageSubmit} className="edit-form">
+                    <input
+                      type="text"
+                      value={editingMessageText}
+                      onChange={handleEditMessageChange}
+                      required
+                    />
+                    {/* */}
+                    <div>
+                      <button className="update-button" type="submit">Update</button>
+                      <button type="button" onClick={cancelEditing}>Cancel</button>
+                    </div>
+                    </form>
+                ) : (
+                  <div className="message-content">
+                    <p>{msg.message}</p>
+                    <span className="username">{msg.user.username}</span>
+                    <span className="timestamp">{new Date(msg.timestamp).toLocaleString()}</span>
+                  </div>
+                )}
+                <div className="message-actions">
+                  {editedMessage.id !== msg.id && (
+                    <button onClick={() => startEditingMessage(msg)} className="edit-button">
+                      Edit
+                    </button>
+                   
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-
-        <div className="chat-box-container">
-          <div className="chat-box">
-            <input 
-            type="text"
-            onChange={newMessage} 
-            placeholder="Type your message..." 
-            className="msg" 
-            required 
+          <form onSubmit={(e) => handleNewMessageSubmit(e, user?.id, user?.name)} className="new-message-form">
+            <input
+              type="text"
+              value={newMessageText}
+              onChange={handleNewMessageChange}
+              placeholder="New message"
+              required
             />
-            <button type="submit" className="btn"><i className="fa fa-chevron-circle-right send-btn"></i></button>
-          </div>
-        </div>
-      </form>
+            <button type="submit">Submit</button>
+          </form>
+        </>
+      )}
     </div>
-  </main>
-)
-}
+  );
+};
