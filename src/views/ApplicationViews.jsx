@@ -31,6 +31,8 @@ import { EventForm } from '../components/forms/EventForm.jsx'
 import { EventEditForm } from '../components/forms/EventEditForm.jsx'
 import { AllNews } from '../components/news/AllNews.jsx'
 import { NewsForm } from '../components/news/NewsForm.jsx'
+import { Dashboard } from '../dashboard/dashboard.jsx';
+
 
 export const ApplicationViews = ({currentUser}) => {
   return (
@@ -39,6 +41,7 @@ export const ApplicationViews = ({currentUser}) => {
       <Routes>
         {/* /login is default page for when app is first opened */}
         <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="home" element={<Dashboard currentUser={currentUser} />} />
         <Route path="events" element={<EventList currentUser={currentUser} />} />
         <Route path="events/new" element={<EventForm currentUser={currentUser} />} />
         <Route path="events/:eventId" element={<EventDetails />} />
