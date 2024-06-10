@@ -44,7 +44,7 @@ export const AllNews = ({ currentUser }) => {
     <>
       <h2>News</h2>
       <div className='button-group'>
-        <button className="btn btn-success" onClick={() => navigate('/news/addArticle')}>+ New Article</button>
+        <button className="btn btn-primary" onClick={() => navigate('/news/addArticle')}>+ New Article</button>
       </div>
           <article className="article">   
             {allArticles.map((article) => {
@@ -91,7 +91,7 @@ export const AllNews = ({ currentUser }) => {
                     <a className="article-url" href={article.url}>{article.url}</a>
                     {article.userId === currentUser.id && (
                       <div className='button-group'>
-                        <button className="btn btn-primary btn-sm" onClick={() => handleEditClick(article)}>Modify</button>
+                        <button className="btn btn-warning btn-sm" onClick={() => handleEditClick(article)}>Modify</button>
                         <button className="btn btn-danger btn-sm" onClick={() => handleDeleteArticle(article.id)}>Delete</button>
                       </div>
                     )}

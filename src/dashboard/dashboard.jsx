@@ -13,19 +13,19 @@ export const Dashboard = ({ currentUser }) => {
         <Col md="4">
           <div className="section">
             <AllNews currentUser={currentUser}/>
-            <a href="#" className="article-link">More News</a>
+            <a href="/news" className="article-link">More News</a>
           </div>
         </Col>
         <Col md="4">
           <div className="section">
             <ImageList currentUser={currentUser}/>
-            <a href="#">More Images</a>
+            <a href="/profile">More Images</a>
           </div>
         </Col>
         <Col md="4">
           <div className="section">
             <EventList currentUser={currentUser}/>
-            <a href="#">More Events</a>
+            <a href="/events">More Events</a>
           </div>
         </Col>
       </Row>
