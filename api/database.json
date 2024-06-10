@@ -31,7 +31,7 @@
       "id": 1,
       "userId": 1,
       "message": "What's up?",
-      "timestamp": "2024-06-20T12:32"
+      "timestamp": "2024-05-20T12:32"
     },
     {
       "id": 2,
@@ -43,13 +43,13 @@
       "id": 3,
       "userId": 3,
       "message": "Good morning!",
-      "timestamp": "2024-06-20T12:32"
+      "timestamp": "2024-04-07T12:32"
     },
     {
       "id": 4,
       "userId": 4,
       "message": "How are you?",
-      "timestamp": "2024-06-11T10:12"
+      "timestamp": "2024-06-10T01:12"
     },
     {
       "id": 5,
@@ -60,25 +60,8 @@
     {
       "userId": 5,
       "message": "Good day to you!",
-      "timestamp": "2024-06-07T18:57:45.860Z",
+      "timestamp": "2024-06-04T18:57",
       "id": 6
-    },
-    {
-      "userId": 5,
-      "message": "Good morrow!",
-      "timestamp": "2024-06-07T18:58:11.981Z",
-      "id": 7
-    },
-    {
-      "userId": 5,
-      "message": "hi",
-      "timestamp": "2024-06-07T18:59:33.487Z",
-      "id": 8,
-      "user": {
-        "id": 5,
-        "username": "Barry",
-        "email": "barry@gmail.com"
-      }
     }
   ],
   "articles": [
@@ -213,7 +196,6 @@
       "url": "https://img1.10bestmedia.com/Images/Photos/412666/Ripleys-Aquarium-of-the-Smokies_55_660x440.jpg",
       "caption": "Saw a massive sea turtle at Ripley's Aquarium, Tennessee"
     },
-  
     {
       "url": "https://images.squarespace-cdn.com/content/v1/51cdafc4e4b09eb676a64e68/1470759791755-P1DBVYSIVA5V4NAWP0T6/nemo5.jpg",
       "caption": "nemo",

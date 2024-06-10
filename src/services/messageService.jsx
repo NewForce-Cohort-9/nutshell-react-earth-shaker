@@ -10,7 +10,7 @@ export const newMessage = (message) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(message),
-  }).then((res) => res.json())
+}).then((res) => res.json())
 }
 
 export const updateMessage = (message) => {
@@ -20,5 +20,4 @@ export const updateMessage = (message) => {
       'Content-type': 'application/json',
     },
     body: JSON.stringify(message)
-  }).then((res) => res.json())
-}
+})}
