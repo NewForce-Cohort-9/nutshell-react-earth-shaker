@@ -22,16 +22,19 @@ export const Messages = () => {
     fetchMessages();
   }, []);
 
-  //reverse is not working until after edit is made... correct and create another pull
+  //removed .reverse( ) fro setMessages(fetchedMessages.reverse()); and now the new messages appear at the bottom of the container???
   const fetchMessages = async () => {
     const fetchedMessages = await getAllMessages();
-    setMessages(fetchedMessages.reverse(""));
+     // Sort messages by timestamp in ascending order
+     fetchedMessages.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+    setMessages(fetchedMessages);
   };
 
   const handleNewMessageChange = (e) => {
     setNewMessageText(e.target.value);
   };
 
+  //console error will appear if wsite is not showing user as logged-in
   const handleNewMessageSubmit = async (e) => {
     e.preventDefault();
     if (!user) {
@@ -121,7 +124,8 @@ export const Messages = () => {
                   </div>
                 )}
                 <div className="message-actions">
-                  {editedMessage.id !== msg.id && (
+                  {/*Ensures that only logged-in user cna edit their msg*/}
+                  {msg.userId === user?.id && (
                     <button onClick={() => startEditingMessage(msg)} className="edit-button">
                       Edit
                     </button>

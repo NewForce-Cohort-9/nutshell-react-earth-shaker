@@ -4,6 +4,7 @@ import { Image } from "./images.jsx"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import "./images.css"
+import { Messages } from "../../components/messages/Messages.jsx"
 
 
 export const ImageList = ({currentUser}) => {
@@ -40,6 +41,9 @@ export const ImageList = ({currentUser}) => {
                     );
                   })}
      </article>
+     <div>
+      <Messages />
+      </div>
     </div>
     ) 
 }
