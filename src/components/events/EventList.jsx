@@ -13,7 +13,7 @@ export const EventList = ({ currentUser }) => {
 
     const getAndSetEvents = () => {
         getAllEvents().then((eventsArray) => {
-            // Sort events by date using descriptive variable names
+            // Sort events by date
             const sortedEvents = eventsArray.sort((firstEvent, secondEvent) => new Date(firstEvent.date) - new Date(secondEvent.date));
             setAllEvents(sortedEvents);
             setFilteredEvents(sortedEvents);
